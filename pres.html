@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Using Symfony Components for Fun and Profit</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/pres.css">
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Droid+Serif:400italic" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<article>
+	<section>
+		<div class="content introduction">
+			<strong>Using Symfony Components for Fun and Profit</strong>
+			<div class="byline bigger-lead-in"><h3>Presented by... um, this guy</h3></div>
+			<img src="img/sam.jpg" alt="Sam" class="intro-rounded">
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><img src="img/sam.jpg" alt="Sam" class="intro-rounded"></div>
+			Hi, I'm Sam.
+			<ul class="smaller spaced-out">
+				<li>Tech Lead @ Flint Interactive.</li>
+				<li>Open source developer, Symfony contributor & enthusiast.</li>
+				<li>7 years PHP & web commercial experience.</li>
+				<li>#melbsf2 group co-organiser.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			First, a quick case-study
+			<div class="byline"></div>
+			<ul class="smaller spaced-out" data-bespoke-bullet>
+				<li>In June, following an office server meltdown, we decided to move from SVN to Git <em>in the cloud</em>.</li>
+				<li>We had ~350 non-archived (active) projects that needed to be moved.</li>
+				<li>Many of our projects were multi-faceted.</li>
+				<li>Many hinged off central libraries where the dependencies were stored.</li>
+				<li>Multiple actions needed to take place to migrate each project.</li>
+				<li>Project migration needed to be coordinated &amp; prioritised to not mess up team of 8+ developers.</li>
+				<li data-bespoke-bullet><strong>This was a more complex operation than a shell script or single-file PHP script could take care of.</strong></li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<div class="content introduction">
+			<strong>this is a very common scenario</strong>
+		</div>
+	</section>
+
+	<section>
+		<div class="content slightly-smaller">
+			<div data-bespoke-bullet>
+				our needs were too complex for a simple script
+			</div>
+			<div data-bespoke-bullet>
+				<div class="byline"><h3>but</h3></div>
+				using a fully fledged web framework would be <strong>overkill</strong>
+			</div>
+			<div data-bespoke-bullet>
+				<div class="byline"><h3>yet</h3></div>
+				we actually <em>needed</em> many of the things that a framework provides
+			</div>
+			<div class="smaller" data-bespoke-bullet>
+				(e.g. command-line utils, database manipulation, process controls, HTTP/Curl wrappers)
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="content introduction">
+			how do you (and did we) overcome this type of challenge <strong>without succumbing to the bloat of a full fledged framework?</strong>
+		</div>
+	</section>
+
+	<section>
+		<div class="content introduction">
+			<strong>Symfony components to the rescue!</strong>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Symfony components?</h3></div>
+			Symfony provides many of the core features of the framework as stand-alone components, that you can use with little-to-no dependencies.
+		</div>
+	</section>
+
+	<section>
+		<div class="content nofade">
+			<div class="byline"><h3>Symfony components?</h3></div>
+			These components are very flexible, and can be applied to quickly solve many common tasks in programming.
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<strong>The Console component</strong>
+			<div class="byline"><h3>Or, how can I make my app work from the command-line?</h3></div>
+			<div class="slightly-smaller">
+				Exactly the same as what ships with the framework, allows you to easily expose application functions on the command-line.
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Using the Console component</h3></div>
+			<script src="https://gist.github.com/samjarrett/09e4427bf58bf12fc646.js"></script>
+			<p class="smaller">
+				add in an implementation of <abbr title="\MyProject\Command\SomeCommand">SomeCommand</abbr>,<br>
+				and viola. we now have a fully functioning command-line app
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<strong>The Finder component</strong>
+			<div class="byline"><h3>Or, how can I find files meeting a certain criteria?</h3></div>
+			<div class="slightly-smaller">
+				A little-known component that is used extensively in the framework's internals, to help you find and traverse files.
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Using the Finder component</h3></div>
+			<script src="https://gist.github.com/samjarrett/5a6fa5ce9674450d8fd4.js"></script>
+			<p class="smaller">
+				Now our application will find all PHP files in the <code>Command</code> directory matching pattern <code>*Command.php</code>.<br>
+				Note: this is actaully very similar to how the framework finds Command classes in your bundles!
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<strong>The Process component</strong>
+			<div class="byline"><h3>Or, how can I safely execute external commands from inside my application?</h3></div>
+			<div class="slightly-smaller">
+				Running other applications from your app, and getting and interpreting the result can be <em>hard</em>. Even more challenging if the command runs for a long period of time and you need to display progress to the user.
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Using the Process component</h3></div>
+			<script src="https://gist.github.com/samjarrett/b0189a82e5fd46e250f1.js"></script>
+			<p class="smaller">
+				This will execute <code>svn2git $svnHref</code> and output any output as it comes from the command directly to the screen.<br>
+				Processes can also execute asynchronously, or execute sandboxed PHP code. Check out the manual for more info:<br>
+				(<a href="http://symfony.com/doc/current/components/process.html#running-processes-asynchronously">symfony.com/doc/.../process.html#running-processes-asynchronously</a>)
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<strong>The PropertyAccess component</strong>
+			<div class="byline"><h3>Or, how can I traverse an object graph to get results easily?</h3></div>
+			<div class="slightly-smaller">
+				A relatively new stand-alone component designed to help you quickly get results out of an object graph.<br>
+				Can be used to solve the age-old hydrate-one-object-from-another issue, or to quickly create limited data for access in a view.
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Using the PropertyAccess component</h3></div>
+			<script src="https://gist.github.com/samjarrett/012f8bc0cef374c2ac35.js"></script>
+		</div>
+	</section>
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Using the PropertyAccess component</h3></div>
+			<p class="smaller">This simple script creates a nested array set of only the data you're allowing to be exposed.</p>
+			<p class="smaller">This can be very useful for creating "safe" versions of ORM data, or in an advanced usage, as it allows you to traverse through arrays or objects in the structure, you can use it to get a simple set of values from a complex object/array (handy for generating reports).</p>
+			<p class="smaller">Symfony internally uses this in translating information from your object through to Form values, and back again.</p>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Other really handy components</h3></div>
+			<ul class="smaller spaced-out">
+				<li data-bespoke-bullet><strong>HTTP Foundation</strong>: The Symfony request/response, session and cookie management library. Very helpful when dealing with actual web requests.</li>
+				<li data-bespoke-bullet><strong>Routing</strong>: For any DIY framework that uses a front controller and needs to route the request to a class/function/<em>"controller"</em>.</li>
+				<li data-bespoke-bullet><strong>Config</strong>: Very helpful series of classes to deal with accepting configuration for your application. Bonus usage: Can be used to validate external data or data from an API meets what you're expecting (as it so often <em>doesn't</em>).</li>
+				<li data-bespoke-bullet><strong>Event Dispatcher</strong>: Implementation of the Observer programming pattern. Very helpful for being able to inform an unknown part of your application when certain things have occurred (aka <em>'hooks'</em>).</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<div class="content nofade">
+			<div class="byline"><h3>Other really handy components</h3></div>
+			<ul class="smaller spaced-out">
+				<li data-bespoke-bullet><strong>DOM Crawler &amp; CSS Selector</strong>: Helps you parse and extract content from X/HTML. Very useful for functional testing. Internally we're implementing it as a crawler to ensure that projects include standard things like Google analytics, etc.</li>
+				<li data-bespoke-bullet><strong>Yaml</strong>: Originally a Symfony1 component, designed to parse Yaml configuration/data into an array structure.</li>
+				<li data-bespoke-bullet style="margin-top: 20px"><strong>and so many more.. make sure you check them out: <a href="http://symfony.com/components">symfony.com/components</a>.</strong></li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			<div class="byline"><h3>Sam out</h3></div>
+			<strong>Thanks for listening to my presentation!</strong><br>
+			I hope you enjoyed it, please feel free to tweet me <a href="http://twitter.com/sammyjarrett" target="_blank">@sammyjarrett</a>.<br>
+		</div>
+	</section>
+
+	<section data-bespoke-state="hiring">
+		<div class="content">
+			<div class="byline"><img src="img/flintnights.jpg" alt="Flint" class="intro-rounded"></div>
+			A quick acknowledgement of tonight's sponsor, <strong>Flint Nights</strong> who've generously picked up our beer and pizza tab (thanks guys!).
+		</div>
+	</section>
+
+	<section>
+		<div class="content">
+			Melbourne Symfony2 Developers Group
+			<div class="byline"><img src="img/symfony.png" alt="Symfony2" class="intro-rounded"></div>
+			Let's reboot this bizzatch! Stay tuned for the next meetup!<br>
+			Oh, and..<br>
+			<strong>Presentations welcome!</strong>
+		</div>
+	</section>
+
+
+
+</article>
+
+<script src="js/bespoke.min.js"></script>
+<script>
+	bespoke.horizontal.from('article', { hash: true, bullets: true, state: true });
+</script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+</body>
+</html>
