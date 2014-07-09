@@ -150,13 +150,12 @@ a:visited {
   text-decoration: none;
   color: #00009d;
 }
+a:link.sam,
+a:visited.sam {
+  color: #333;
+}
 a:hover {
   text-decoration: underline;
-}
-.hiring section {
-  background-image: url(../img/were-hiring.png);
-  background-position: top right;
-  background-repeat: no-repeat;
 }
 .spaced-out li {
   margin-bottom: 20px;
